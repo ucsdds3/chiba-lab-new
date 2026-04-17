@@ -1,4 +1,4 @@
-# Build frontend/ and deploy to GitHub Pages (site: https://ucsdds3.github.io/chiba-lab/)
+# Build frontend/ and deploy to GitHub Pages (site: https://ucsdds3.github.io/chiba-lab-new/)
 # Repo Settings → Pages → Build and deployment → Source: GitHub Actions
 
 name: Deploy to GitHub Pages

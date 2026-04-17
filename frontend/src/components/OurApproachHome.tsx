@@ -21,7 +21,7 @@ export default function OurApproachHome() {
             Explore the Science
           </Link>
           <a
-            href="https://github.com/chiba-lab"
+            href="https://github.com/ucsdds3/chiba-lab-new"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center rounded-full border border-slate-300 px-6 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-500 hover:text-slate-900"

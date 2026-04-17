@@ -104,7 +104,7 @@ When implementing a **new section** from Figma:
 - **App**: React 19, TypeScript, Vite 7.
 - **Styling**: Tailwind CSS v4 via `@tailwindcss/vite` and `@import "tailwindcss"` in `frontend/src/styles/index.css`.
 - **Routing**: `HashRouter` in `frontend/src/main.tsx` (required for GitHub Pages).
-- **Deploy**: Static build to GitHub Pages with Vite `base` set to `chiba-lab/` in `frontend/vite.config.ts`.
+- **Deploy**: Static build to GitHub Pages with Vite `base` set to `chiba-lab-new/` in `frontend/vite.config.ts`.
 
 ## Repository layout
 
@@ -132,7 +132,7 @@ When implementing a **new section** from Figma:
 
 5. **Images and assets**  
    Export raster assets at appropriate resolution; use SVG where the design uses vectors.  
-   For anything under `public/`, remember the **`base` path** (`chiba-lab/`): prefer Vite-handled imports from `src` when possible, or paths that respect the deployed base URL.
+   For anything under `public/`, remember the **`base` path** (`chiba-lab-new/`): prefer Vite-handled imports from `src` when possible, or paths that respect the deployed base URL.
 
 6. **Content**  
    Use exact headings and body copy from the design unless the user supplies different copy. Do not invent lab-specific claims.
@@ -158,7 +158,7 @@ Compose new sections as components that use `Section` / `SectionHeading` when th
 ## GitHub Pages constraints
 
 - Do **not** switch to `BrowserRouter` without also solving hosting for client-side routes.
-- After structural or asset-path changes, verify `npm run build` and that links/assets work with the `chiba-lab/` base.
+- After structural or asset-path changes, verify `npm run build` and that links/assets work with the `chiba-lab-new/` base.
 
 ## Definition of done
 

@@ -39,7 +39,7 @@ export default function Footer() {
               News
             </Link>
             <a
-              href="https://github.com/chiba-lab"
+              href="https://github.com/ucsdds3/chiba-lab-new"
               target="_blank"
               rel="noopener noreferrer"
               className="transition hover:text-white"
