@@ -6,5 +6,5 @@ export default defineConfig({
   plugins: [react(),
             tailwindcss()
   ],
-  base: "chiba-lab/"
+  base: "/chiba-lab/"
 })
