@@ -1,1 +1,18 @@
 @import "tailwindcss";
+
+/* Align in-page scroll targets below the sticky header (see Navbar + Section scroll-mt). */
+html {
+  scroll-padding-top: 5.5rem;
+}
+
+@media (min-width: 640px) {
+  html {
+    scroll-padding-top: 7rem;
+  }
+}
+
+@media (min-width: 768px) {
+  html {
+    scroll-padding-top: 8rem;
+  }
+}
