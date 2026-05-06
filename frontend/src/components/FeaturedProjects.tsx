@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { projects, themes } from "../data/featuredProjects";
 import type { FeaturedTheme } from "../data/featuredProjects";
 import Section from "./Section";
@@ -15,6 +16,7 @@ type PositionedTheme = FeaturedTheme & {
 };
 
 export default function FeaturedProjects() {
+  const navigate = useNavigate();
   const [selectedThemeId, setSelectedThemeId] = useState<string | null>(null);
   const [selectedProjectId, setSelectedProjectId] = useState<string | null>(null);
 
@@ -279,7 +281,7 @@ export default function FeaturedProjects() {
                 <p className="mt-2 text-sm leading-7 text-slate-700 sm:text-base">
                   {project.summary}
                 </p>
-                <ul className="mt-4 flex flex-wrap gap-2">
+                <div className="mt-4 flex flex-wrap items-center gap-2">
                   {project.themeIds.map((themeId) => {
                     const tagTheme = positionedThemes.find((theme) => theme.id === themeId);
                     if (!tagTheme) {
@@ -289,13 +291,63 @@ export default function FeaturedProjects() {
                     return (
                       <li
                         key={`${project.id}-${themeId}`}
-                        className="max-w-full break-words rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-700"
+                        className="list-none max-w-full wrap-break-word rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-700"
                       >
                         {tagTheme.label}
                       </li>
                     );
                   })}
-                </ul>
+                  {project.members && project.members.length > 0 && (
+                    <>
+                      <span className="text-slate-300">|</span>
+                      {project.members.map((member) => {
+                        const handleClick = member.memberId
+                          ? (e: React.MouseEvent) => {
+                              e.stopPropagation();
+                              navigate("/team", { state: { scrollToId: member.memberId } });
+                            }
+                          : undefined;
+                        const handleKeyDown = member.memberId
+                          ? (e: React.KeyboardEvent) => {
+                              if (e.key === "Enter" || e.key === " ") {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                navigate("/team", { state: { scrollToId: member.memberId } });
+                              }
+                            }
+                          : undefined;
+                        const interactiveProps = member.memberId
+                          ? {
+                              role: "link" as const,
+                              tabIndex: 0,
+                              onClick: handleClick,
+                              onKeyDown: handleKeyDown,
+                              className: "h-12 w-12 shrink-0 cursor-pointer rounded-full ring-2 ring-white",
+                            }
+                          : { className: "h-12 w-12 shrink-0 rounded-full ring-2 ring-white" };
+
+                        return member.image ? (
+                          <img
+                            key={member.name}
+                            src={member.image}
+                            alt={member.name}
+                            title={member.name}
+                            {...interactiveProps}
+                            className={`${interactiveProps.className} bg-slate-200 object-cover`}
+                          />
+                        ) : (
+                          <div
+                            key={member.name}
+                            title={member.name}
+                            aria-label={member.name}
+                            {...interactiveProps}
+                            className={`${interactiveProps.className} bg-slate-200`}
+                          />
+                        );
+                      })}
+                    </>
+                  )}
+                </div>
               </button>
             ))}
             {filteredProjects.length === 0 && (

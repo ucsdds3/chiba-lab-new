@@ -31,6 +31,7 @@ export default function MeetOurTeam() {
             return (
               <button
                 key={member.id}
+                id={member.id}
                 type="button"
                 className={`${cardClassName} cursor-pointer transition hover:border-slate-300 hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2`}
                 onClick={() => setSelectedMember(member)}
@@ -60,7 +61,7 @@ export default function MeetOurTeam() {
           }
 
           return (
-            <article key={member.id} className={`${cardClassName} justify-center`}>
+            <article key={member.id} id={member.id} className={`${cardClassName} justify-center`}>
               {member.tags && member.tags.length > 0 ? (
                 <div className="mb-3 flex flex-wrap items-center justify-center gap-2">
                   {member.tags.map((tag) => (
